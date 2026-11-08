@@ -1389,6 +1389,8 @@ fieldset { border: 0; padding: 0; margin: 0; min-width: 0; }
   .scroll-cue { display: none; }
 }
 
+.btn:disabled { opacity: 0.6; cursor: wait; transform: none; box-shadow: none; }
+
 </style>
 </head>
 <body>
@@ -2065,7 +2067,7 @@ fieldset { border: 0; padding: 0; margin: 0; min-width: 0; }
           </form>
 
           <div id="rsvpSuccessBanner" class="rsvp-success hidden" role="status">
-            <span class="eyebrow">¡Muchas gracias!</span>
+            <span id="rsvpConfirmationEyebrow" class="eyebrow">¡Muchas gracias!</span>
             <h3 id="rsvpConfirmationHeading">We have received your response</h3>
             <p id="rsvpConfirmationSummary"></p>
           </div>
@@ -2609,8 +2611,55 @@ fieldset { border: 0; padding: 0; margin: 0; min-width: 0; }
   }
 
   // --------------------------------------------------------------------------
-  // 10. RSVP — stored in this browser's localStorage, exportable to CSV
+  // 10. RSVP — sent to Google Forms, with a backup copy in this browser
   // --------------------------------------------------------------------------
+
+  // Paste your Google Form's PRE-FILLED link here (see README → "RSVP → Google Forms").
+  // When making that link, answer each question with its keyword:
+  //   NAME, EMAIL, ATTENDING, PARTY, ENTREE, SHUTTLE, EVENTS, DIETARY, SONG, MESSAGE
+  // Leave it empty and RSVPs are only kept in the guest's own browser.
+  const GOOGLE_FORM_PREFILLED_LINK = '';
+
+  const GOOGLE_FORM_KEYWORDS = {
+    NAME: 'guestName', EMAIL: 'guestEmail', ATTENDING: 'attendance', PARTY: 'guestCount',
+    ENTREE: 'mealPreference', SHUTTLE: 'shuttleNeeded', EVENTS: 'events',
+    DIETARY: 'dietaryNotes', SONG: 'songRequest', MESSAGE: 'personalNote',
+  };
+
+  function parseGoogleForm(link) {
+    if (!link) return null;
+    try {
+      const url = new URL(link);
+      const match = url.pathname.match(/\/forms\/d\/e\/([^/]+)\//);
+      if (!match) throw new Error('not a Google Forms link');
+      const fields = {};
+      url.searchParams.forEach((value, key) => {
+        const field = GOOGLE_FORM_KEYWORDS[value.trim().toUpperCase()];
+        if (key.startsWith('entry.') && field) fields[field] = key;
+      });
+      if (!Object.keys(fields).length) throw new Error('no keyword answers found in the link');
+      return { action: `https://docs.google.com/forms/d/e/${match[1]}/formResponse`, fields };
+    } catch (err) {
+      console.warn('RSVP: Google Form link not usable —', err.message);
+      return null;
+    }
+  }
+
+  const googleForm = parseGoogleForm(GOOGLE_FORM_PREFILLED_LINK);
+
+  function sendToGoogleForm(entry) {
+    if (!googleForm) return Promise.resolve(false);
+    const body = new URLSearchParams();
+    Object.entries(googleForm.fields).forEach(([field, entryId]) => {
+      let value = entry[field] || '';
+      if (field === 'attendance') value = value === 'accepts' ? 'Joyfully accepts' : 'Regretfully declines';
+      body.append(entryId, value);
+    });
+    // Google Forms does not send CORS headers, so the reply is opaque: a resolved
+    // fetch means the request reached Google; a rejected one means it did not.
+    return fetch(googleForm.action, { method: 'POST', mode: 'no-cors', body }).then(() => true);
+  }
+
   const STORAGE_KEY = 'anasofia_nate_wedding_rsvps_v1';
   const form = $('rsvpForm');
   const detailsBox = $('attendingDetailsBox');
@@ -2696,25 +2745,61 @@ fieldset { border: 0; padding: 0; margin: 0; min-width: 0; }
         submittedAt: new Date().toLocaleDateString('en-US', { month: 'short', day: 'numeric', year: 'numeric' }),
       };
 
-      const list = getSaved();
-      list.unshift(entry);
-      save(list);
-
-      if (successBox && successHeading && successSummary) {
-        successBox.classList.remove('hidden');
-        if (yes) {
-          successHeading.textContent = `¡Nos vemos en Medellín, ${entry.guestName}!`;
-          successSummary.textContent = `Confirmed for ${entry.guestCount} guest(s) · ${entry.mealPreference} · Shuttle: ${entry.shuttleNeeded}.`;
-        } else {
-          successHeading.textContent = `Thank you, ${entry.guestName}.`;
-          successSummary.textContent = 'We will miss you in Medellín and are grateful for your warm wishes.';
-        }
-        successBox.scrollIntoView({ behavior: reduceMotion ? 'auto' : 'smooth', block: 'center' });
+      const submitBtn = form.querySelector('button[type="submit"]');
+      const submitLabel = submitBtn ? submitBtn.textContent : '';
+      if (submitBtn) {
+        submitBtn.disabled = true;
+        submitBtn.textContent = 'Sending…';
       }
 
-      form.reset();
-      if (detailsBox) detailsBox.classList.remove('hidden');
+      sendToGoogleForm(entry)
+        .then(() => {
+          const list = getSaved();
+          list.unshift(entry);
+          save(list);
+          showConfirmation(entry, yes);
+          form.reset();
+          if (detailsBox) detailsBox.classList.remove('hidden');
+        })
+        .catch(() => {
+          showMessage(
+            'We couldn’t send your reply',
+            'Please check your internet connection and press Send again. Your answers are still in the form.',
+            'One moment'
+          );
+        })
+        .finally(() => {
+          if (submitBtn) {
+            submitBtn.disabled = false;
+            submitBtn.textContent = submitLabel;
+          }
+        });
     });
+  }
+
+  const successEyebrow = $('rsvpConfirmationEyebrow');
+
+  function showMessage(heading, summary, eyebrow = '¡Muchas gracias!') {
+    if (!successBox || !successHeading || !successSummary) return;
+    successBox.classList.remove('hidden');
+    if (successEyebrow) successEyebrow.textContent = eyebrow;
+    successHeading.textContent = heading;
+    successSummary.textContent = summary;
+    successBox.scrollIntoView({ behavior: reduceMotion ? 'auto' : 'smooth', block: 'center' });
+  }
+
+  function showConfirmation(entry, yes) {
+    if (yes) {
+      showMessage(
+        `¡Nos vemos en Medellín, ${entry.guestName}!`,
+        `Confirmed for ${entry.guestCount} guest(s) · ${entry.mealPreference} · Shuttle: ${entry.shuttleNeeded}.`
+      );
+    } else {
+      showMessage(
+        `Thank you, ${entry.guestName}.`,
+        'We will miss you in Medellín and are grateful for your warm wishes.'
+      );
+    }
   }
 
   if (listToggle && listDrawer) {

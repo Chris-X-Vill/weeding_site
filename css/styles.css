@@ -1371,3 +1371,5 @@ fieldset { border: 0; padding: 0; margin: 0; min-width: 0; }
   .hero-meta .dot { display: none; }
   .scroll-cue { display: none; }
 }
+
+.btn:disabled { opacity: 0.6; cursor: wait; transform: none; box-shadow: none; }
