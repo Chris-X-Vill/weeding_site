@@ -1,4 +1,4 @@
-# Ana Sofia & Nate — Wedding Website
+# Sofia & Nate — Wedding Website
 **Saturday, August 7th, 2027 · Medellín, Colombia**
 
 A minimal, warm wedding site styled after the draped-curtain & candlelight photograph
@@ -11,6 +11,8 @@ A minimal, warm wedding site styled after the draped-curtain & candlelight photo
 | **Palette** | Sampled from the photo: sheer ivory `#FBF8F3`, lit drapes `#F5EEE4`, candle glow `#ECC8AD`, flame amber `#D6A274`, bronze accent `#8E6240`, warm espresso ink `#3A2E26`. |
 | **Fonts** | *Cormorant Garamond* (light, editorial serif headings + italic ampersands), *Jost* (light, airy sans for body & small caps labels), *Pinyon Script* available for flourishes. |
 | **Frames** | Photos sit in fine gallery mats: an inner white hairline plus an offset bronze hairline that shifts on hover. Arched frames for portraits & the venue, soft rectangles for story and gallery. Empty frames show a soft wash of the curtain photo with an italic caption. |
+| **Monogram** | The S + N crest (`assets/images/monogram-sn.png`, light version for the footer) appears in the header, above the names and in the footer, and is the favicon. |
+| **Venue arch** | The venue photo sits in a half-moon arch rising out of a ground floral meadow (`assets/images/floral-meadow.svg`, regenerate with `python3 tools/make_meadow.py`). |
 | **Details** | Letterpress-style double-rule cards (venue, RSVP), candle ornament dividers, hairline countdown, underline-only form fields, flicker glow behind the names. |
 
 ## Sections
@@ -22,6 +24,7 @@ index.html                     page markup
 css/styles.css                 all styles
 js/app.js                      all interactions
 assets/photos/                 background photograph
+assets/images/                 monogram, favicon, floral meadow
 standalone.html                single-file build (CSS, JS, photo inlined)
 tools/build_standalone.py      regenerates standalone.html
 ```

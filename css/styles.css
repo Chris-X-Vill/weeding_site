@@ -1,5 +1,5 @@
 /* ==========================================================================
-   Ana Sofia & Nate — Wedding Website
+   Sofia & Nate — Wedding Website
    Saturday, August 7th, 2027 · Medellín, Colombia
 
    "Candlelight & Sheer Ivory" — minimal, warm, editorial.
@@ -282,24 +282,14 @@ svg.icon {
   gap: 0.8rem;
 }
 
-.monogram-mark {
-  width: 2.6rem;
-  height: 2.6rem;
-  border-radius: 50%;
-  border: 1px solid var(--line);
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  white-space: nowrap;
-  font-family: var(--serif);
-  font-size: 1.02rem;
-  color: var(--ink);
-  background: rgba(255, 253, 250, 0.6);
-  transition: border-color 0.3s, background 0.3s;
+.monogram-img {
+  height: 3.1rem;
+  width: auto;
+  transition: transform 0.5s var(--ease), opacity 0.3s;
 }
 
-.monogram:hover .monogram-mark { border-color: var(--bronze); background: var(--white); }
-.monogram-mark .amp { font-size: 0.85rem; margin: 0 0.05rem; }
+.monogram:hover .monogram-img { transform: scale(1.06); }
+.site-header.is-scrolled .monogram-img { height: 2.6rem; }
 
 .monogram-text { display: none; line-height: 1.15; }
 .monogram-text b { display: block; font-family: var(--serif); font-weight: 400; font-size: 1.15rem; color: var(--ink); }
@@ -425,6 +415,12 @@ svg.icon {
 }
 
 .hero-inner { max-width: 54rem; }
+
+.hero-monogram {
+  height: clamp(6.5rem, 15vh, 9rem);
+  width: auto;
+  margin: 0 auto 1.6rem;
+}
 
 .hero-names {
   font-size: clamp(3.4rem, 11vw, 7.6rem);
@@ -739,7 +735,6 @@ svg.icon {
 /* Frame sizes */
 .size-bio { width: 9.5rem; height: 12rem; }
 .size-story { width: 100%; max-width: 22rem; aspect-ratio: 4 / 3; }
-.size-venue { width: 100%; max-width: 22rem; aspect-ratio: 4 / 5; margin-inline: auto; }
 
 /* --------------------------------------------------------------------------
    Medellín Portal (sticky scroll-zoom arch)
@@ -935,8 +930,7 @@ svg.icon {
 /* --------------------------------------------------------------------------
    Venue & Schedule
    -------------------------------------------------------------------------- */
-.venue-grid { display: grid; gap: 4rem; align-items: center; margin-bottom: 6rem; }
-@media (min-width: 960px) { .venue-grid { grid-template-columns: 1.35fr 1fr; } }
+.venue-layout { max-width: 860px; margin: 0 auto 6rem; }
 
 .venue-card { padding: clamp(2rem, 5vw, 3.4rem); }
 .venue-card h3 { font-size: clamp(1.9rem, 4vw, 2.6rem); font-weight: 300; margin: 1rem 0 0.4rem; }
@@ -1325,6 +1319,8 @@ fieldset { border: 0; padding: 0; margin: 0; min-width: 0; }
   padding: 5rem 1.5rem 3.5rem;
 }
 
+.footer-monogram { height: 7rem; width: auto; margin: 0 auto 1.6rem; opacity: 0.9; }
+
 .site-footer .footer-names { font-family: var(--serif); font-weight: 300; font-size: clamp(2.2rem, 6vw, 3.4rem); color: var(--ivory); }
 .site-footer .amp { color: var(--glow); }
 .site-footer .footer-date { margin-top: 1rem; font-size: 0.7rem; letter-spacing: 0.3em; text-transform: uppercase; color: var(--glow); }
@@ -1373,3 +1369,54 @@ fieldset { border: 0; padding: 0; margin: 0; min-width: 0; }
 }
 
 .btn:disabled { opacity: 0.6; cursor: wait; transform: none; box-shadow: none; }
+
+/* --------------------------------------------------------------------------
+   Venue — half-moon arch rising out of a ground floral meadow
+   -------------------------------------------------------------------------- */
+.moon-stage {
+  position: relative;
+  width: min(820px, 100%);
+  margin: 0 auto 4.5rem;
+  padding-bottom: clamp(0.6rem, 1.6vw, 0.9rem);
+}
+
+.frame-moon {
+  --moon: 50% 50% 0 0 / 100% 100% 0 0;
+  width: min(600px, 86%);
+  aspect-ratio: 2 / 1;
+  margin-inline: auto;
+  border-radius: var(--moon);
+}
+
+/* Concentric halo instead of the usual offset outline */
+.frame-moon::before {
+  inset: -16px -16px 0 -16px;
+  transform: none;
+  border-bottom: 0;
+  border-radius: var(--moon);
+}
+
+.frame-moon:hover::before { transform: none; inset: -10px -10px 0 -10px; }
+
+.frame-moon .photo-placeholder,
+.frame-moon .photo-placeholder::after { border-radius: var(--moon); }
+
+.frame-moon .photo-placeholder { background-position: center 80%; }
+.frame-moon .photo-placeholder::after { bottom: 0; border-bottom: 0; }
+.frame-moon .photo-caption { padding-bottom: clamp(2.4rem, 8vw, 4.2rem); }
+
+.meadow {
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  width: 100%;
+  height: auto;
+  z-index: 5;
+  pointer-events: none;
+}
+
+@media (max-width: 640px) {
+  .frame-moon { width: 92%; }
+  .meadow { width: 124%; left: -12%; }
+  .frame-moon::before { inset: -10px -10px 0 -10px; }
+}

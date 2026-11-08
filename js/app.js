@@ -1,5 +1,5 @@
 /* ==========================================================================
-   Ana Sofia & Nate — Wedding Website (Vanilla JS)
+   Sofia & Nate — Wedding Website (Vanilla JS)
    Saturday, August 7th, 2027 · Medellín, Colombia
    ========================================================================== */
 
@@ -228,7 +228,7 @@
       story_intro: 'From an unexpected meeting over Colombian coffee to a life full of adventure, laughter and two vibrant cultures — here is how our journey unfolded.',
       bio_sofi_role: 'The Bride · La Novia', bio_nate_role: 'The Groom · El Novio',
       bio_sofi_text: 'Warm-hearted, endlessly curious, and proud of her Colombian roots. Whether she is curating playlists, planning the next trip, or bringing everyone together around the table, she fills every room with joy.',
-      bio_nate_text: 'Thoughtful, adventurous, and always ready to make Ana Sofia laugh. He fell in love with Ana Sofia first — and shortly after with aguardiente, arepas de chócolo, and the mountain views of Medellín.',
+      bio_nate_text: 'Thoughtful, adventurous, and always ready to make Sofia laugh. He fell in love with Sofia first — and shortly after with aguardiente, arepas de chócolo, and the mountain views of Medellín.',
       m1_title: 'How We First Met',
       m1_desc: 'What started as a simple conversation quickly turned into hours of talking as if we had known each other for years. By the end of the night, we both knew something extraordinary had begun.',
       m2_title: 'Falling in Love with Medellín',
@@ -264,7 +264,7 @@
       story_intro: 'Desde un encuentro inesperado tomando café colombiano hasta una vida llena de aventuras, risas y dos culturas vibrantes — así comenzó nuestro camino.',
       bio_sofi_role: 'La Novia · The Bride', bio_nate_role: 'El Novio · The Groom',
       bio_sofi_text: 'Cálida, curiosa y orgullosa de sus raíces colombianas. Ya sea creando listas de música, planeando el próximo viaje o reuniendo a todos en la mesa, llena cada rincón de alegría.',
-      bio_nate_text: 'Detallista, aventurero y siempre listo para hacer reír a Ana Sofia. Se enamoró primero de Ana Sofia — y muy pronto del aguardiente, las arepas de chócolo y las montañas de Medellín.',
+      bio_nate_text: 'Detallista, aventurero y siempre listo para hacer reír a Sofia. Se enamoró primero de Sofia — y muy pronto del aguardiente, las arepas de chócolo y las montañas de Medellín.',
       m1_title: 'Cómo Nos Conocimos',
       m1_desc: 'Lo que comenzó como una charla casual se convirtió en horas de conversación, como si nos conociéramos de toda la vida. Al terminar la noche, sabíamos que algo único había comenzado.',
       m2_title: 'Enamorándonos de Medellín',
@@ -321,19 +321,19 @@
       const ics = [
         'BEGIN:VCALENDAR',
         'VERSION:2.0',
-        'PRODID:-//Ana Sofia and Nate Wedding//Medellin 2027//EN',
+        'PRODID:-//Sofia and Nate Wedding//Medellin 2027//EN',
         'BEGIN:VEVENT',
-        'UID:anasofia-nate-wedding-20270807@medellin',
+        'UID:sofia-nate-wedding-20270807@medellin',
         `DTSTAMP:${stamp}`,
         'DTSTART:20270807T203000Z',
         'DTEND:20270808T060000Z',
-        'SUMMARY:Wedding of Ana Sofia & Nate',
+        'SUMMARY:Wedding of Sofia & Nate',
         'DESCRIPTION:Welcome drinks 3:30 PM · Ceremony 4:00 PM (COT). Dress code: Tropical Formal / Garden Black-Tie Optional.',
         'LOCATION:Hacienda & Jardín Botánico Santa Elena\\, Km 27 Vía Las Palmas – El Retiro\\, Medellín\\, Antioquia\\, Colombia',
         'END:VEVENT',
         'END:VCALENDAR',
       ].join('\r\n');
-      downloadBlob(ics, 'text/calendar;charset=utf-8', 'Ana-Sofia-and-Nate-Wedding-Aug-7-2027.ics');
+      downloadBlob(ics, 'text/calendar;charset=utf-8', 'Sofia-and-Nate-Wedding-Aug-7-2027.ics');
     });
   }
 
@@ -499,7 +499,7 @@
       placeholders.forEach((el, i) => {
         const [accent, bg] = tones[i % tones.length];
         const caption = el.querySelector('.photo-caption span');
-        applyImage(el, sampleArt(caption ? caption.textContent : 'Ana Sofia & Nate', accent, bg));
+        applyImage(el, sampleArt(caption ? caption.textContent : 'Sofia & Nate', accent, bg));
       });
     });
   }
@@ -726,7 +726,7 @@
       const headers = ['Name', 'Email', 'Attendance', 'Party Size', 'Entree', 'Shuttle', 'Events', 'Dietary', 'Song Request', 'Message', 'Submitted Date'];
       const keys = ['guestName', 'guestEmail', 'attendance', 'guestCount', 'mealPreference', 'shuttleNeeded', 'events', 'dietaryNotes', 'songRequest', 'personalNote', 'submittedAt'];
       const rows = list.map((r) => keys.map((k) => `"${String(r[k] || '').replace(/"/g, '""')}"`).join(','));
-      downloadBlob([headers.join(','), ...rows].join('\n'), 'text/csv;charset=utf-8;', 'Ana-Sofia-Nate-Wedding-RSVPs.csv');
+      downloadBlob([headers.join(','), ...rows].join('\n'), 'text/csv;charset=utf-8;', 'Sofia-Nate-Wedding-RSVPs.csv');
     });
   }
 
