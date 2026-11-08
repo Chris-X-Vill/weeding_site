@@ -1,0 +1,718 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Ana Sofia &amp; Nate — August 7, 2027 · Medellín, Colombia</title>
+  <meta name="description" content="Join us to celebrate the wedding of Ana Sofia & Nate on Saturday, August 7th, 2027 in Medellín, Colombia." />
+  <meta name="theme-color" content="#FBF8F3" />
+  <meta property="og:title" content="Ana Sofia & Nate · August 7, 2027" />
+  <meta property="og:description" content="Two worlds, one love story — Medellín, Colombia." />
+  <meta property="og:image" content="assets/photos/draped-candlelight-bg.jpg" />
+
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;1,300;1,400&family=Jost:wght@300;400;500&family=Pinyon+Script&display=swap" rel="stylesheet" />
+
+  <link rel="stylesheet" href="css/styles.css" />
+</head>
+<body>
+
+  <!-- Candle (reused as the flourish ornament) -->
+  <svg width="0" height="0" style="position:absolute" aria-hidden="true">
+    <symbol id="i-candle" viewBox="0 0 14 20">
+      <path d="M7 1.2c1.6 2 2.2 3.4 2.2 4.5A2.2 2.2 0 0 1 7 7.9a2.2 2.2 0 0 1-2.2-2.2c0-1.1.6-2.5 2.2-4.5z" fill="currentColor" stroke="none" />
+      <rect x="4.2" y="9.5" width="5.6" height="9.3" rx="0.8" fill="none" stroke="currentColor" stroke-width="1" />
+    </symbol>
+  </svg>
+
+  <div id="scrollProgressBar" aria-hidden="true"></div>
+
+  <input type="file" id="photoUploadInput" accept="image/*" hidden />
+  <input type="file" id="multiPhotoUploadInput" accept="image/*" multiple hidden />
+
+  <!-- ======================================================================
+       HEADER
+       ====================================================================== -->
+  <header id="siteHeader" class="site-header">
+    <div class="header-inner">
+      <a href="#home" class="monogram" aria-label="Ana Sofia & Nate — home">
+        <span class="monogram-mark">A<span class="amp">&amp;</span>N</span>
+        <span class="monogram-text">
+          <b>Ana Sofia &amp; Nate</b>
+          <small>08 · 07 · 2027</small>
+        </span>
+      </a>
+
+      <nav class="main-nav" aria-label="Main">
+        <a href="#story" class="nav-link" data-i18n="nav_story">Our Story</a>
+        <a href="#venue" class="nav-link" data-i18n="nav_venue">The Day</a>
+        <a href="#medellin" class="nav-link" data-i18n="nav_medellin">Medellín</a>
+        <a href="#attire" class="nav-link" data-i18n="nav_attire">Dress Code</a>
+        <a href="#gallery" class="nav-link" data-i18n="nav_gallery">Photos</a>
+      </nav>
+
+      <div class="header-actions">
+        <button id="langToggleBtn" type="button" class="lang-btn" title="English / Español">
+          <span id="langLabel">EN · ES</span>
+        </button>
+        <a href="#rsvp" class="btn btn-solid btn-sm header-rsvp" data-i18n="nav_rsvp">R.S.V.P.</a>
+        <button id="mobileMenuBtn" type="button" class="menu-btn" aria-label="Open menu" aria-expanded="false" aria-controls="mobileMenuDrawer">
+          <svg id="menuIconOpen" class="icon" viewBox="0 0 24 24"><path d="M4 8h16M4 16h16" /></svg>
+          <svg id="menuIconClose" class="icon" viewBox="0 0 24 24" hidden><path d="M6 6l12 12M18 6L6 18" /></svg>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <div id="mobileMenuDrawer" class="mobile-drawer" aria-hidden="true">
+    <a href="#story" class="mobile-nav-link" data-i18n="nav_story">Our Story</a>
+    <a href="#venue" class="mobile-nav-link" data-i18n="nav_venue">The Day</a>
+    <a href="#medellin" class="mobile-nav-link" data-i18n="nav_medellin">Medellín</a>
+    <a href="#attire" class="mobile-nav-link" data-i18n="nav_attire">Dress Code</a>
+    <a href="#gallery" class="mobile-nav-link" data-i18n="nav_gallery">Photos</a>
+    <a href="#rsvp" class="mobile-nav-link btn btn-solid" data-i18n="nav_rsvp">R.S.V.P.</a>
+  </div>
+
+  <main>
+    <!-- ====================================================================
+         HERO — the candlelight curtain
+         ==================================================================== -->
+    <section id="home" class="hero">
+      <div id="heroBg" class="hero-bg" aria-hidden="true"></div>
+      <div class="hero-glow" aria-hidden="true"></div>
+
+      <div class="hero-inner" data-reveal="fade-up">
+        <span class="eyebrow" data-i18n="hero_eyebrow">Together with their families</span>
+
+        <h1 class="hero-names">Ana Sofia <span class="amp">&amp;</span> Nate</h1>
+
+        <p class="hero-quote" data-i18n="hero_subtitle">
+          “Two worlds, one love story — gathering our favorite people in the City of Eternal Spring.”
+        </p>
+
+        <div class="hero-meta">
+          <span data-i18n="hero_date">Saturday · August 7 · 2027</span>
+          <span class="dot" aria-hidden="true"></span>
+          <span>Medellín, Colombia</span>
+        </div>
+
+        <div class="countdown" role="timer" aria-label="Countdown to the wedding">
+          <div class="countdown-cell"><span id="cd-days" class="countdown-num">—</span><span class="countdown-label" data-i18n="cd_days">Days</span></div>
+          <div class="countdown-cell"><span id="cd-hours" class="countdown-num">—</span><span class="countdown-label" data-i18n="cd_hours">Hours</span></div>
+          <div class="countdown-cell"><span id="cd-minutes" class="countdown-num">—</span><span class="countdown-label" data-i18n="cd_mins">Minutes</span></div>
+          <div class="countdown-cell"><span id="cd-seconds" class="countdown-num">—</span><span class="countdown-label" data-i18n="cd_secs">Seconds</span></div>
+        </div>
+        <p class="countdown-caption" data-i18n="countdown_label">Until “I do” · 4:00 PM COT</p>
+
+        <div class="hero-actions">
+          <a href="#rsvp" class="btn btn-solid" data-i18n="hero_cta_rsvp">Kindly R.S.V.P.</a>
+          <button id="addToCalendarBtn" type="button" class="btn btn-light">
+            <svg class="icon" viewBox="0 0 24 24"><rect x="3.5" y="5" width="17" height="15" rx="1.5" /><path d="M3.5 10h17M8 3v4M16 3v4" /></svg>
+            <span data-i18n="hero_cta_calendar">Save the Date</span>
+          </button>
+        </div>
+      </div>
+
+      <a href="#medellin-portal" class="scroll-cue" aria-label="Scroll down">
+        <span aria-hidden="true"></span>
+        Scroll
+      </a>
+    </section>
+
+    <!-- ====================================================================
+         MEDELLÍN PORTAL — sticky scroll-zoom arch
+         ==================================================================== -->
+    <section id="medellin-portal" aria-label="Welcome to Medellín">
+      <div id="portalScrollTrack" class="scroll-portal-track">
+        <div class="scroll-portal-sticky">
+
+          <div id="portalLeftShutter" class="portal-side portal-side-left" aria-hidden="true">
+            <span class="eyebrow">Medellín</span>
+            <p>The City of<br />Eternal Spring</p>
+            <span class="rule"></span>
+          </div>
+
+          <div id="portalArchWindow" class="portal-arch-window">
+            <div id="portalInnerBg" aria-hidden="true"></div>
+            <div class="portal-scrim" aria-hidden="true"></div>
+
+            <span id="portalProgressLabel" class="portal-label">01 / 03</span>
+
+            <div class="portal-steps">
+              <div id="portalStep1" class="portal-step-card is-active">
+                <span class="eyebrow" data-i18n="portal1_eyebrow">The Destination</span>
+                <h3 data-i18n="portal1_title">Welcome to Medellín</h3>
+                <p data-i18n="portal1_text">Tucked high in the Andes, Medellín greets you with eternal-spring weather and true Colombian warmth.</p>
+              </div>
+              <div id="portalStep2" class="portal-step-card">
+                <span class="eyebrow" data-i18n="portal2_eyebrow">Feria de las Flores</span>
+                <h3 data-i18n="portal2_title">August in Full Bloom</h3>
+                <p data-i18n="portal2_text">Our wedding weekend falls during the Festival of the Flowers, when orchids and rose petals fill the mountain estates.</p>
+              </div>
+              <div id="portalStep3" class="portal-step-card">
+                <span class="eyebrow" data-i18n="portal3_eyebrow">The Celebration</span>
+                <h3 data-i18n="portal3_title">Saturday, August 7th</h3>
+                <p data-i18n="portal3_text">We gather at Hacienda &amp; Jardín Botánico Santa Elena for candlelit vows, golden-hour cocktails, dinner and dancing.</p>
+              </div>
+            </div>
+
+            <div class="portal-dots" aria-hidden="true">
+              <span id="portalDot1" class="portal-dot is-active"></span>
+              <span id="portalDot2" class="portal-dot"></span>
+              <span id="portalDot3" class="portal-dot"></span>
+            </div>
+          </div>
+
+          <div id="portalRightShutter" class="portal-side portal-side-right" aria-hidden="true">
+            <span class="eyebrow">08 · 07 · 2027</span>
+            <p>Ana Sofia<br />&amp; Nate</p>
+            <span class="rule"></span>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- ====================================================================
+         OUR STORY
+         ==================================================================== -->
+    <section id="story" class="section section-cream">
+      <div class="container">
+        <header class="section-head" data-reveal="fade-up">
+          <span class="eyebrow" data-i18n="story_eyebrow">Nuestra Historia</span>
+          <h2 class="section-title" data-i18n="story_title">Our Love Story</h2>
+          <div class="flourish" aria-hidden="true"><svg><use href="#i-candle" /></svg></div>
+          <p class="lead" data-i18n="story_intro">
+            From an unexpected meeting over Colombian coffee to a life full of adventure, laughter and two vibrant cultures — here is how our journey unfolded.
+          </p>
+        </header>
+
+        <div class="bios">
+          <article class="bio" data-reveal="slide-left">
+            <div class="frame frame-arch size-bio">
+              <div class="photo-placeholder scroll-zoom-object" data-scroll-zoom="0.08" data-slot="bio-sofi" data-title="Portrait of Ana Sofia" tabindex="0" role="button" aria-label="Upload a portrait of Ana Sofia">
+                <div class="photo-caption"><small>Portrait</small><span>Ana Sofia</span></div>
+                <span class="placeholder-overlay-badge">Add photo</span>
+              </div>
+            </div>
+            <div>
+              <span class="bio-role" data-i18n="bio_sofi_role">The Bride · La Novia</span>
+              <h3>Ana Sofia</h3>
+              <p data-i18n="bio_sofi_text">Warm-hearted, endlessly curious, and proud of her Colombian roots. Whether she is curating playlists, planning the next trip, or bringing everyone together around the table, she fills every room with joy.</p>
+            </div>
+          </article>
+
+          <article class="bio" data-reveal="slide-right">
+            <div class="frame frame-arch size-bio">
+              <div class="photo-placeholder scroll-zoom-object" data-scroll-zoom="0.08" data-slot="bio-nate" data-title="Portrait of Nate" tabindex="0" role="button" aria-label="Upload a portrait of Nate">
+                <div class="photo-caption"><small>Portrait</small><span>Nate</span></div>
+                <span class="placeholder-overlay-badge">Add photo</span>
+              </div>
+            </div>
+            <div>
+              <span class="bio-role" data-i18n="bio_nate_role">The Groom · El Novio</span>
+              <h3>Nate</h3>
+              <p data-i18n="bio_nate_text">Thoughtful, adventurous, and always ready to make Ana Sofia laugh. He fell in love with Ana Sofia first — and shortly after with aguardiente, arepas de chócolo, and the mountain views of Medellín.</p>
+            </div>
+          </article>
+        </div>
+
+        <div id="storyTimelineContainer" class="timeline">
+          <div class="timeline-spine" aria-hidden="true"><div id="storyTimelineProgress" class="timeline-spine-progress"></div></div>
+
+          <div class="milestone">
+            <div class="timeline-node" data-threshold="0.15">i</div>
+            <div class="milestone-text" data-reveal="fade-up">
+              <span class="chapter">Chapter I</span>
+              <h3 data-i18n="m1_title">How We First Met</h3>
+              <p data-i18n="m1_desc">What started as a simple conversation quickly turned into hours of talking as if we had known each other for years. By the end of the night, we both knew something extraordinary had begun.</p>
+            </div>
+            <div class="milestone-photo" data-reveal="zoom-in">
+              <div class="frame frame-soft size-story">
+                <div class="photo-placeholder scroll-zoom-object" data-scroll-zoom="0.1" data-slot="story-1" data-title="Chapter I — Our early days" tabindex="0" role="button" aria-label="Upload a photo for chapter one">
+                  <div class="photo-caption"><small>Chapter I</small><span>Our early days</span></div>
+                  <span class="placeholder-overlay-badge">Add photo</span>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="milestone reverse">
+            <div class="timeline-node" data-threshold="0.5">ii</div>
+            <div class="milestone-text" data-reveal="fade-up">
+              <span class="chapter">Chapter II</span>
+              <h3 data-i18n="m2_title">Falling in Love with Medellín</h3>
+              <p data-i18n="m2_desc">Introducing Nate to Medellín — the lush green mountains, the warmth of family, and sunsets over the Aburrá Valley — made it clear where we wanted to celebrate the biggest day of our lives.</p>
+            </div>
+            <div class="milestone-photo" data-reveal="zoom-in">
+              <div class="frame frame-soft frame-left size-story">
+                <div class="photo-placeholder scroll-zoom-object" data-scroll-zoom="0.1" data-slot="story-2" data-title="Chapter II — Adventures in Colombia" tabindex="0" role="button" aria-label="Upload a photo for chapter two">
+                  <div class="photo-caption"><small>Chapter II</small><span>Adventures in Colombia</span></div>
+                  <span class="placeholder-overlay-badge">Add photo</span>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="milestone">
+            <div class="timeline-node" data-threshold="0.85">iii</div>
+            <div class="milestone-text" data-reveal="fade-up">
+              <span class="chapter">Chapter III</span>
+              <h3 data-i18n="m3_title">The Proposal</h3>
+              <p data-i18n="m3_desc">With a ring tucked safely away and hearts racing, Nate asked the question that changed everything. Through happy tears and the easiest “Yes!”, we began planning our forever in Colombia.</p>
+            </div>
+            <div class="milestone-photo" data-reveal="zoom-in">
+              <div class="frame frame-soft size-story">
+                <div class="photo-placeholder scroll-zoom-object" data-scroll-zoom="0.1" data-slot="story-3" data-title="Chapter III — The proposal" tabindex="0" role="button" aria-label="Upload a photo for chapter three">
+                  <div class="photo-caption"><small>Chapter III</small><span>The proposal</span></div>
+                  <span class="placeholder-overlay-badge">Add photo</span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ====================================================================
+         VENUE & SCHEDULE
+         ==================================================================== -->
+    <section id="venue" class="section">
+      <div class="container">
+        <header class="section-head" data-reveal="fade-up">
+          <span class="eyebrow" data-i18n="venue_eyebrow">When &amp; Where</span>
+          <h2 class="section-title" data-i18n="venue_title">The Venue</h2>
+          <div class="flourish" aria-hidden="true"><svg><use href="#i-candle" /></svg></div>
+          <p class="lead" data-i18n="venue_subtitle">Join us amid cloud-forest gardens and colonial architecture in the hills above Medellín.</p>
+        </header>
+
+        <div class="venue-grid">
+          <div class="card-framed venue-card" data-reveal="slide-left">
+            <div class="venue-head-row">
+              <span class="tag">Ceremony &amp; Reception</span>
+              <span class="eyebrow">August 7, 2027 · 3:30 PM</span>
+            </div>
+            <h3>Hacienda &amp; Jardín Botánico Santa Elena</h3>
+            <p class="venue-region">El Retiro corridor · Antioquia, Colombia</p>
+
+            <div class="venue-address">
+              <svg class="icon" viewBox="0 0 24 24"><path d="M12 21s-6.5-6.2-6.5-11.2a6.5 6.5 0 0 1 13 0C18.5 14.8 12 21 12 21z" /><circle cx="12" cy="9.8" r="2.3" /></svg>
+              <div>
+                <p id="venueAddressText" class="venue-address-text">Km 27 Vía Las Palmas – El Retiro, Vereda Pantanillo, Medellín, Antioquia, Colombia</p>
+                <small>25 minutes from El Poblado · 20 minutes from José María Córdova International Airport (MDE)</small>
+              </div>
+            </div>
+
+            <div class="venue-info">
+              <div>
+                <h4>Guest Shuttles</h4>
+                <p>Departing at <strong>2:45 PM</strong> from Hotel Click Clack &amp; Hotel Marquee in El Poblado (Provenza). Return shuttles run 10:30 PM – 2:00 AM.</p>
+              </div>
+              <div>
+                <h4>Arriving by Car</h4>
+                <p>Complimentary valet parking at the Hacienda main gate. Uber and Cabify operate reliably along Vía Las Palmas.</p>
+              </div>
+            </div>
+
+            <div class="venue-actions">
+              <button id="copyAddressBtn" type="button" class="btn btn-solid btn-sm">
+                <svg class="icon" viewBox="0 0 24 24"><rect x="8" y="8" width="12" height="12" rx="1.5" /><path d="M16 8V5.5A1.5 1.5 0 0 0 14.5 4h-9A1.5 1.5 0 0 0 4 5.5v9A1.5 1.5 0 0 0 5.5 16H8" /></svg>
+                <span id="copyAddressLabel">Copy Address</span>
+              </button>
+              <a href="https://www.google.com/maps/search/?api=1&amp;query=V%C3%ADa+Las+Palmas+El+Retiro+Medellin+Colombia" target="_blank" rel="noopener noreferrer" class="btn btn-ghost btn-sm">
+                Open in Maps
+                <svg class="icon" viewBox="0 0 24 24"><path d="M7 17L17 7M9 7h8v8" /></svg>
+              </a>
+            </div>
+          </div>
+
+          <div data-reveal="zoom-in">
+            <div class="frame frame-arch size-venue">
+              <div class="photo-placeholder scroll-zoom-object" data-scroll-zoom="0.1" data-slot="venue-photo" data-title="Hacienda & Gardens — the venue" tabindex="0" role="button" aria-label="Upload a photo of the venue">
+                <div class="photo-caption"><small>The Venue</small><span>Hacienda Santa Elena</span></div>
+                <span class="placeholder-overlay-badge">Add photo</span>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="schedule" data-reveal="fade-up">
+          <span class="eyebrow">Order of Events · Programa del Día</span>
+          <h3 class="schedule-day">Saturday, August 7th, 2027</h3>
+
+          <ol class="schedule-list" data-stagger-group>
+            <li class="schedule-item" data-reveal="fade-up">
+              <span class="schedule-time">3:30 PM</span>
+              <h4>Welcome Drinks</h4>
+              <p>Lulo spritzers, botanical infusions and acoustic guitar in the courtyard.</p>
+            </li>
+            <li class="schedule-item" data-reveal="fade-up">
+              <span class="schedule-time">4:00 PM</span>
+              <h4>The Ceremony</h4>
+              <p>Vows among sheer drapes, candlelight, rose petals and native orchids.</p>
+            </li>
+            <li class="schedule-item" data-reveal="fade-up">
+              <span class="schedule-time">5:15 PM</span>
+              <h4>Golden Hour</h4>
+              <p>Sunset over the Andes with Colombian pasabocas and a live trio.</p>
+            </li>
+            <li class="schedule-item" data-reveal="fade-up">
+              <span class="schedule-time">6:30 PM</span>
+              <h4>Dinner &amp; Toasts</h4>
+              <p>A candlelit three-course dinner, Colombian-meets-modern.</p>
+            </li>
+            <li class="schedule-item" data-reveal="fade-up">
+              <span class="schedule-time">8:30 PM</span>
+              <h4>Fiesta &amp; Hora Loca</h4>
+              <p>First dance, salsa, merengue — and midnight empanadas.</p>
+            </li>
+          </ol>
+          <p class="tz-note">All times Colombia Time · COT (UTC−5)</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- ====================================================================
+         MEDELLÍN GUIDE
+         ==================================================================== -->
+    <section id="medellin" class="section section-cream">
+      <div class="container">
+        <header class="section-head" data-reveal="fade-up">
+          <span class="eyebrow" data-i18n="mde_eyebrow">La Ciudad de la Eterna Primavera</span>
+          <h2 class="section-title" data-i18n="mde_title">Discover Medellín</h2>
+          <div class="flourish" aria-hidden="true"><svg><use href="#i-candle" /></svg></div>
+          <p class="lead" data-i18n="mde_intro">Nestled in an Andean valley, Medellín enjoys spring-like weather all year — and our date coincides with the city’s beloved Feria de las Flores.</p>
+        </header>
+
+        <div class="facts" data-reveal="fade-up">
+          <div class="fact"><small>August Weather</small><p>22°C · 72°F</p><span>Eternal spring</span></div>
+          <div class="fact"><small>Fly Into</small><p>MDE · Rionegro</p><span>30 min via Túnel de Oriente</span></div>
+          <div class="fact"><small>Where to Stay</small><p>El Poblado</p><span>Walkable cafés &amp; hotels</span></div>
+          <div class="fact"><small>The Season</small><p><em>Feria de las Flores</em></p><span>Flower Festival week</span></div>
+        </div>
+
+        <div class="filters" role="group" aria-label="Filter recommendations" data-reveal="fade-up">
+          <button type="button" class="mde-filter-btn active-filter" data-category="all" aria-pressed="true">All</button>
+          <button type="button" class="mde-filter-btn" data-category="culture" aria-pressed="false">Culture &amp; Sights</button>
+          <button type="button" class="mde-filter-btn" data-category="dining" aria-pressed="false">Coffee &amp; Dining</button>
+          <button type="button" class="mde-filter-btn" data-category="daytrips" aria-pressed="false">Day Trips &amp; Nature</button>
+        </div>
+
+        <div id="medellinGrid" class="mde-grid" data-stagger-group>
+          <article class="mde-card" data-category="culture" data-reveal="fade-up">
+            <span class="tag">August only</span>
+            <h3>Feria de las Flores &amp; Silleteros</h3>
+            <p>Every August Medellín bursts into bloom. Watch the silleteros parade monumental floral arrangements and visit the Botanical Garden’s Orquideorama.</p>
+            <footer><span>Santa Elena &amp; citywide</span><span>Early August</span></footer>
+          </article>
+
+          <article class="mde-card" data-category="dining" data-reveal="fade-up">
+            <span class="tag">Gastronomy</span>
+            <h3>Vía Primavera &amp; Provenza</h3>
+            <p>Tree-lined streets full of boutiques, specialty cafés like Pergamino, and wonderful restaurants such as Carmen, Oci.Mde and Elcielo.</p>
+            <footer><span>El Poblado</span><span>Walkable</span></footer>
+          </article>
+
+          <article class="mde-card" data-category="daytrips" data-reveal="fade-up">
+            <span class="tag">Full day</span>
+            <h3>Guatapé &amp; El Peñol</h3>
+            <p>Climb the 740 steps of La Piedra del Peñol for emerald lake views, cruise the islands, and stroll Guatapé’s colorful zócalo streets.</p>
+            <footer><span>1.5 hrs east</span><span>Tour or private van</span></footer>
+          </article>
+
+          <article class="mde-card" data-category="culture" data-reveal="fade-up">
+            <span class="tag">3 hours</span>
+            <h3>Comuna 13 Art Walk</h3>
+            <p>Medellín’s inspiring transformation told through murals, hillside escalators, breakdance performances and local street food.</p>
+            <footer><span>San Javier</span><span>Morning tour</span></footer>
+          </article>
+
+          <article class="mde-card" data-category="culture" data-reveal="fade-up">
+            <span class="tag">Half day</span>
+            <h3>Plaza Botero &amp; Museo de Antioquia</h3>
+            <p>Twenty-three monumental bronze sculptures gifted by Fernando Botero, steps from the historic Museo de Antioquia.</p>
+            <footer><span>Centro</span><span>15 min by Metro</span></footer>
+          </article>
+
+          <article class="mde-card" data-category="daytrips" data-reveal="fade-up">
+            <span class="tag">4 hours</span>
+            <h3>Andean Coffee Finca</h3>
+            <p>Tour a boutique mountain coffee farm, hand-pick Arabica cherries, learn the roasting craft and enjoy a guided cupping.</p>
+            <footer><span>Santa Elena hills</span><span>Half-day</span></footer>
+          </article>
+
+          <article class="mde-card" data-category="daytrips" data-reveal="fade-up">
+            <span class="tag">Scenic</span>
+            <h3>Metrocable to Parque Arví</h3>
+            <p>Glide above the city and pine forests by gondola to the Parque Arví nature reserve, with orchid trails and artisan markets.</p>
+            <footer><span>Santo Domingo → Arví</span><span>Gondola</span></footer>
+          </article>
+
+          <article class="mde-card" data-category="dining" data-reveal="fade-up">
+            <span class="tag">Evening</span>
+            <h3>Rooftops &amp; Salsa</h3>
+            <p>Sip cocktails at Envy Rooftop, Mosquito or La Deriva as the valley lights up, then dance salsa at Son Havana.</p>
+            <footer><span>Provenza &amp; Laureles</span><span>Sunset to late</span></footer>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- ====================================================================
+         DRESS CODE
+         ==================================================================== -->
+    <section id="attire" class="section">
+      <div class="container-narrow">
+        <header class="section-head" data-reveal="fade-up">
+          <span class="eyebrow" data-i18n="attire_eyebrow">Código de Vestimenta</span>
+          <h2 class="section-title" data-i18n="attire_title">Dress Code</h2>
+          <span class="dress-badge">Tropical Formal · Garden Black-Tie Optional</span>
+          <p class="lead" data-i18n="attire_intro">We invite you to dress in warm botanical, earth and candlelit tones inspired by the gardens of Medellín. Select a shade for styling ideas.</p>
+        </header>
+
+        <div class="card palette-card" data-reveal="zoom-in">
+          <div id="colorPaletteGrid" class="swatches">
+            <button type="button" class="color-swatch-btn active" data-name="Champagne" data-hex="#D9C2A3" data-role="Warm Metallics"
+              data-her="Brushed gold, bronze or deep champagne satin — please avoid pale ivory and white."
+              data-him="Taupe, tan or warm sand wool-linen suit with cognac shoes.">
+              <span class="swatch-circle" style="background:#D9C2A3"></span><span class="swatch-name">Champagne</span>
+            </button>
+            <button type="button" class="color-swatch-btn" data-name="Candle Amber" data-hex="#D29A5E" data-role="Golden Hour"
+              data-her="Marigold, amber or warm ochre silk that glows at golden hour."
+              data-him="Classic dark suit with amber or tortoiseshell accents.">
+              <span class="swatch-circle" style="background:#D29A5E"></span><span class="swatch-name">Amber</span>
+            </button>
+            <button type="button" class="color-swatch-btn" data-name="Terracotta Clay" data-hex="#B8735A" data-role="Warm Earth"
+              data-her="Draped terracotta or rust crepe — effortless warmth against the gardens."
+              data-him="Warm brown or navy suit with a rust tie or boutonnière.">
+              <span class="swatch-circle" style="background:#B8735A"></span><span class="swatch-name">Terracotta</span>
+            </button>
+            <button type="button" class="color-swatch-btn" data-name="Petal Rose" data-hex="#C99A8C" data-role="Romantic Florals"
+              data-her="Dusty rose, mauve or muted coral, floor-length with soft movement."
+              data-him="Charcoal or midnight suit with a muted rose pocket square.">
+              <span class="swatch-circle" style="background:#C99A8C"></span><span class="swatch-name">Rose</span>
+            </button>
+            <button type="button" class="color-swatch-btn" data-name="Andean Sage" data-hex="#8C9478" data-role="Botanical Greens"
+              data-her="Silk, satin or chiffon in olive or eucalyptus; lovely with gold jewelry."
+              data-him="Olive or charcoal suit with a sage silk tie.">
+              <span class="swatch-circle" style="background:#8C9478"></span><span class="swatch-name">Sage</span>
+            </button>
+            <button type="button" class="color-swatch-btn" data-name="Cloud Forest" data-hex="#3F5546" data-role="Evening Greens"
+              data-her="Emerald or forest green in silk or chiffon, velvet accents welcome."
+              data-him="Forest-green dinner jacket or classic tuxedo.">
+              <span class="swatch-circle" style="background:#3F5546"></span><span class="swatch-name">Forest</span>
+            </button>
+            <button type="button" class="color-swatch-btn" data-name="Colombian Espresso" data-hex="#5C4433" data-role="Rich Neutrals"
+              data-her="Chocolate or espresso satin — timeless and modern."
+              data-him="Espresso or chocolate tailored suit with dark leather loafers.">
+              <span class="swatch-circle" style="background:#5C4433"></span><span class="swatch-name">Espresso</span>
+            </button>
+            <button type="button" class="color-swatch-btn" data-name="Midnight" data-hex="#2E3238" data-role="Classic Formal"
+              data-her="Midnight navy or charcoal with statement botanical earrings."
+              data-him="Midnight navy, charcoal or black suit or tuxedo.">
+              <span class="swatch-circle" style="background:#2E3238"></span><span class="swatch-name">Midnight</span>
+            </button>
+          </div>
+
+          <div class="swatch-detail" aria-live="polite">
+            <div class="swatch-preview-wrap">
+              <div id="selectedSwatchPreview" style="background-color:#D9C2A3"></div>
+              <div class="swatch-preview-meta">
+                <small id="selectedSwatchRole">Warm Metallics</small>
+                <h3 id="selectedSwatchName">Champagne</h3>
+                <button id="copyHexBtn" type="button" class="swatch-hex" title="Copy color code"><span id="selectedSwatchHex">#D9C2A3</span></button>
+              </div>
+            </div>
+            <div class="swatch-advice">
+              <div><h4>For Her</h4><p id="selectedSwatchHer">Brushed gold, bronze or deep champagne satin — please avoid pale ivory and white.</p></div>
+              <div><h4>For Him</h4><p id="selectedSwatchHim">Taupe, tan or warm sand wool-linen suit with cognac shoes.</p></div>
+            </div>
+          </div>
+        </div>
+
+        <div class="attire-notes" data-stagger-group>
+          <div data-reveal="fade-up"><h4>Ivory is for the bride</h4><p>Kindly leave white, ivory and cream to Ana Sofia.</p></div>
+          <div data-reveal="fade-up"><h4>Mind the gardens</h4><p>Block heels or wedges are kind to lawns and cobblestones.</p></div>
+          <div data-reveal="fade-up"><h4>Bring a light layer</h4><p>Mountain evenings cool to around 15°C (59°F).</p></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ====================================================================
+         GALLERY
+         ==================================================================== -->
+    <section id="gallery" class="section section-cream">
+      <div class="container">
+        <header class="section-head" data-reveal="fade-up">
+          <span class="eyebrow" data-i18n="gallery_eyebrow">Galería</span>
+          <h2 class="section-title" data-i18n="gallery_title">Captured Moments</h2>
+          <div class="flourish" aria-hidden="true"><svg><use href="#i-candle" /></svg></div>
+          <div class="gallery-controls">
+            <button id="batchUploadPhotosBtn" type="button" class="link-btn">Upload photos</button>
+            <button id="loadSampleArtBtn" type="button" class="link-btn">Preview art</button>
+            <button id="resetPlaceholdersBtn" type="button" class="link-btn">Reset</button>
+          </div>
+        </header>
+
+        <div class="gallery-grid" data-stagger-group>
+          <div class="frame frame-soft" data-reveal="zoom-in">
+            <div class="photo-placeholder" data-slot="gallery-1" data-title="Golden hour portrait" tabindex="0" role="button" aria-label="Upload gallery photo 1">
+              <div class="photo-caption"><small>No. 01</small><span>Golden hour</span></div>
+              <span class="placeholder-overlay-badge">Add photo</span>
+            </div>
+          </div>
+          <div class="frame frame-soft" data-reveal="zoom-in">
+            <div class="photo-placeholder" data-slot="gallery-2" data-title="A candid moment" tabindex="0" role="button" aria-label="Upload gallery photo 2">
+              <div class="photo-caption"><small>No. 02</small><span>Candid</span></div>
+              <span class="placeholder-overlay-badge">Add photo</span>
+            </div>
+          </div>
+          <div class="frame frame-soft" data-reveal="zoom-in">
+            <div class="photo-placeholder" data-slot="gallery-3" data-title="The details" tabindex="0" role="button" aria-label="Upload gallery photo 3">
+              <div class="photo-caption"><small>No. 03</small><span>The details</span></div>
+              <span class="placeholder-overlay-badge">Add photo</span>
+            </div>
+          </div>
+          <div class="frame frame-soft" data-reveal="zoom-in">
+            <div class="photo-placeholder" data-slot="gallery-4" data-title="Coffee date" tabindex="0" role="button" aria-label="Upload gallery photo 4">
+              <div class="photo-caption"><small>No. 04</small><span>Coffee date</span></div>
+              <span class="placeholder-overlay-badge">Add photo</span>
+            </div>
+          </div>
+          <div class="frame frame-soft" data-reveal="zoom-in">
+            <div class="photo-placeholder" data-slot="gallery-5" data-title="Medellín mountains" tabindex="0" role="button" aria-label="Upload gallery photo 5">
+              <div class="photo-caption"><small>No. 05</small><span>Medellín</span></div>
+              <span class="placeholder-overlay-badge">Add photo</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ====================================================================
+         RSVP
+         ==================================================================== -->
+    <section id="rsvp" class="section rsvp-section">
+      <div class="container-narrow">
+        <div class="card-framed rsvp-card" data-reveal="fade-up">
+          <header class="section-head">
+            <span class="eyebrow">August 7th, 2027 · Medellín</span>
+            <h2 class="section-title" data-i18n="rsvp_title">Kindly Reply</h2>
+            <div class="flourish" aria-hidden="true"><svg><use href="#i-candle" /></svg></div>
+            <p class="rsvp-deadline" data-i18n="rsvp_deadline">Please respond by June 1st, 2027 so we can save your seat and shuttle.</p>
+          </header>
+
+          <form id="rsvpForm" class="form-grid" novalidate>
+            <div class="form-grid cols-2">
+              <div class="field">
+                <label for="guestName">Full name(s)</label>
+                <input type="text" id="guestName" name="guestName" required autocomplete="name" placeholder="Camille &amp; Julian Vance" />
+              </div>
+              <div class="field">
+                <label for="guestEmail">Email</label>
+                <input type="email" id="guestEmail" name="guestEmail" required autocomplete="email" placeholder="you@example.com" />
+              </div>
+            </div>
+
+            <fieldset class="field-group">
+              <legend class="field-legend">Will you celebrate with us?</legend>
+              <div class="choice-grid">
+                <label class="choice">
+                  <input type="radio" name="attendance" value="accepts" checked />
+                  <span><b>Joyfully accepts</b><small>Can’t wait to celebrate in Medellín</small></span>
+                </label>
+                <label class="choice">
+                  <input type="radio" name="attendance" value="declines" />
+                  <span><b>Regretfully declines</b><small>Toasting to you from afar</small></span>
+                </label>
+              </div>
+            </fieldset>
+
+            <div id="attendingDetailsBox">
+              <div class="form-grid cols-3">
+                <div class="field">
+                  <label for="guestCount">Party size</label>
+                  <select id="guestCount" name="guestCount">
+                    <option value="1">1 guest</option>
+                    <option value="2" selected>2 guests</option>
+                    <option value="3">3 guests</option>
+                    <option value="4">4 guests</option>
+                  </select>
+                </div>
+                <div class="field">
+                  <label for="mealPreference">Entrée</label>
+                  <select id="mealPreference" name="mealPreference">
+                    <option value="Colombian Beef Tenderloin">Filet &amp; truffle yuca</option>
+                    <option value="Pacific Sea Bass">Pacific sea bass</option>
+                    <option value="Andean Wild Mushroom Risotto (Vegetarian)">Mushroom risotto (veg.)</option>
+                    <option value="Chef's Botanical Tasting (Vegan)">Botanical tasting (vegan)</option>
+                  </select>
+                </div>
+                <div class="field">
+                  <label for="shuttleNeeded">Shuttle</label>
+                  <select id="shuttleNeeded" name="shuttleNeeded">
+                    <option value="Yes — Shuttle from El Poblado">Yes, reserve seats</option>
+                    <option value="No — Arriving by private car">No, arriving separately</option>
+                  </select>
+                </div>
+              </div>
+
+              <fieldset class="field-group">
+                <legend class="field-legend">Weekend events</legend>
+                <div class="check-row">
+                  <label><input type="checkbox" name="events" value="Welcome Cocktails (Fri Aug 6)" checked /> Fri 6 · Welcome drinks</label>
+                  <label><input type="checkbox" name="events" value="Wedding Ceremony & Reception (Sat Aug 7)" checked /> Sat 7 · Wedding</label>
+                  <label><input type="checkbox" name="events" value="Farewell Brunch (Sun Aug 8)" checked /> Sun 8 · Farewell brunch</label>
+                </div>
+              </fieldset>
+
+              <div class="form-grid cols-2">
+                <div class="field">
+                  <label for="dietaryNotes">Dietary notes</label>
+                  <input type="text" id="dietaryNotes" name="dietaryNotes" placeholder="Gluten-free, nut allergy…" />
+                </div>
+                <div class="field">
+                  <label for="songRequest">Song request</label>
+                  <input type="text" id="songRequest" name="songRequest" placeholder="Artist — Song" />
+                </div>
+              </div>
+            </div>
+
+            <div class="field">
+              <label for="personalNote">A note for the couple</label>
+              <textarea id="personalNote" name="personalNote" rows="2" placeholder="Travel dates, well wishes…"></textarea>
+            </div>
+
+            <div class="form-submit">
+              <button type="submit" class="btn btn-solid">Send R.S.V.P.</button>
+            </div>
+          </form>
+
+          <div id="rsvpSuccessBanner" class="rsvp-success hidden" role="status">
+            <span class="eyebrow">¡Muchas gracias!</span>
+            <h3 id="rsvpConfirmationHeading">We have received your response</h3>
+            <p id="rsvpConfirmationSummary"></p>
+          </div>
+
+          <div class="rsvp-manager">
+            <span>Responses saved on this device: <strong id="rsvpCountBadge">0</strong></span>
+            <button id="toggleRsvpListBtn" type="button" class="link-btn">View</button>
+            <button id="exportRsvpCsvBtn" type="button" class="link-btn">Export CSV</button>
+          </div>
+          <div id="rsvpListDrawer" class="rsvp-list hidden"></div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <p class="footer-names">Ana Sofia <span class="amp">&amp;</span> Nate</p>
+    <div class="flourish" aria-hidden="true"><svg><use href="#i-candle" /></svg></div>
+    <p class="footer-date">Saturday, August 7th, 2027 · Medellín, Colombia</p>
+    <p class="footer-tags">#AnaSofiaAndNate2027 · #NosVemosEnMedellín</p>
+  </footer>
+
+  <script src="js/app.js"></script>
+</body>
+</html>
