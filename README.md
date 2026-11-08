@@ -34,6 +34,7 @@ tools/build_standalone.py      regenerates standalone.html
 - **Directly from a phone's Files app:** open `standalone.html` — everything is embedded so nothing is blocked.
 
 After editing `index.html`, `css/` or `js/`, run `python3 tools/build_standalone.py` to refresh `standalone.html`.
+When you change `css/styles.css` or `js/app.js`, also bump the `?v=` number on their links in `index.html` so visitors' browsers fetch the new files instead of a cached copy.
 
 ## Adding photos
 Click any frame to upload a photo (or **Upload photos** in the gallery to fill several frames at once). Uploads preview in the browser only. To make a photo permanent, save it in `assets/photos/` and add an `<img class="uploaded-preview" src="assets/photos/…" alt="…">` inside that frame's `.photo-placeholder` (and add the `has-image` class).
