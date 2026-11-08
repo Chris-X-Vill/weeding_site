@@ -21,12 +21,12 @@ photo_uri = 'data:image/jpeg;base64,' + base64.b64encode((ROOT / PHOTO).read_byt
 
 css = css.replace("url('../" + PHOTO + "')", "url('" + photo_uri + "')")
 
-link = '<link rel="stylesheet" href="css/styles.css" />'
-script = '<script src="js/app.js"></script>'
-assert link in html and script in html, 'index.html no longer references css/js as expected'
+link_re = re.compile(r'<link rel="stylesheet" href="css/styles\.css(\?v=[^"]*)?" />')
+script_re = re.compile(r'<script src="js/app\.js(\?v=[^"]*)?"></script>')
+assert link_re.search(html) and script_re.search(html), 'index.html no longer references css/js as expected'
 
-html = html.replace(link, '<style>\n' + css + '\n</style>')
-html = html.replace(script, '<script>\n' + js.replace('</script', '<\\/script') + '\n</script>')
+html = link_re.sub(lambda m: '<style>\n' + css + '\n</style>', html)
+html = script_re.sub(lambda m: '<script>\n' + js.replace('</script', '<\\/script') + '\n</script>', html)
 
 def data_uri(rel):
     mime = mimetypes.guess_type(rel)[0] or 'application/octet-stream'
